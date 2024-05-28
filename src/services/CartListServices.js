@@ -51,15 +51,12 @@ const SaveCartListService =async(req)=>{
 const UpdateCartListService =async(req)=>{
     try{
         let user_id = req.headers.user_id
-        let reqBody = req.body 
         let cartID = req.params.cartID
-        await CartModel.updateOne({_id:cartID, userId:user_id} , {$set:reqBody}, {upsert:true})
-        return {status:'success' , message:'successfully cart create '}
-
-
-
+        let reqBody = req.body 
+        await CartModel.updateOne({_id:cartID, userId:user_id} , {$set:reqBody})
+        return {status:'success' , message:'successfully cart list update '}
     }catch(e){
-        return {status:'fail' , message:'cart not found data '}
+        return {status:'fail' , message:'cart update not found data '}
 
 
     }

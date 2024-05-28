@@ -3,7 +3,7 @@ const { ProductBrandList, ProductCategoryList, ProductListByBrand, ProductListBy
 const { UserLogin, UserVerify, UserLogOut, CreateProfile, UpdateProfile, UserProfileRead } = require('../controllers/UserControllers')
 const AuthVerification = require('../middlewares/AuthVerification')
 const { CreateWishList, RemoveWishList, WishList } = require('../controllers/WishListControllers')
-const { SaveCartList, RemoveCartList, CartList } = require('../controllers/CartListControllers')
+const { SaveCartList, RemoveCartList, CartList, UpdateCartList } = require('../controllers/CartListControllers')
 const router = express.Router()
 
 //product api
@@ -37,6 +37,7 @@ router.get('/WishList/', AuthVerification, WishList)
 //cartList api
 router.post('/SaveCartList/', AuthVerification, SaveCartList)
 router.post('/RemoveCartList/', AuthVerification, RemoveCartList)
+router.post('/UpdateCartList/:cartID', AuthVerification, UpdateCartList)
 router.get('/CartList/', AuthVerification, CartList)
 
 
